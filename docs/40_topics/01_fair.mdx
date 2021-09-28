@@ -94,13 +94,17 @@ that allows researchers to give extensive and precise information on their depos
 
 ### F3. metadata clearly and explicitly include the identifier of the data it describes
 
+<!-- The first half of the sentence sounds grammatically not correct (but I probably err) -->
+
 As F1 stipulated that the (meta)data must be assigned an identifier, F3 underlines the importance of including this identifier in the metadata itself. The metadata and the dataset it describes are typically separate files. Including the identifier in the metadata directly links the information to the associated dataset.
-Furthermore, the dataset may not be published alongside the metadata. For example, in the case of unpublished archived datasets, the PID can lead to a method to contact those responsible for the data instead of to the dataset itself.
+Furthermore, the dataset may not be published alongside the metadata. For example, in the case of unpublished archived datasets, the PID can lead to a method (e.g. a landing page) to contact those responsible for the data instead of to the dataset itself.
 Researchers must be aware of this importance, while repositories, as described in F2 above, should ensure that the PID is a required property of the metadata.
 
 ### F4. (meta)data are registered or indexed in a searchable resource
 
 Metadata are used to set up indices, enabling machines to efficiently search for and find datasets. For this process to work successfully, metadata must be complete as outlined above. Repositories should ensure the metadata entered for a deposited dataset is available in an XML format to facilitate the assignment of indices.
+
+<!-- instead of narrowing it down to an XML format, maybe just "machine readable" format. I think not all of the metadata are stored as XML?! -->
 
 ## Accessible
 
@@ -108,38 +112,51 @@ Accessible means that humans and machines receive instructions on how to obtain 
 
 ### A1. (meta)data are retrievable by their identifier using a standardized communications protocol
 
-To guarantee access to data sets, use identifiers such as DOIs that are resolved by standard methods. Common protocols include http(s) or ftp.
+<!-- In the following sentence you address the reader directly?!
+suggestion: ... data sets, persistent identifiers, such as e.g. DOIs, are suggested which resolved by ... -->
+
+To guarantee access to data sets, use identifiers such as DOIs that are resolved by standard methods. Common protocols include http(s) or (s)ftp.
 
 #### A1.1 the protocol is open, free, and universally implementable
 
-Repositories should only use protocols that allow any computer to access at least the metadata. Not only does this refer to standard communication protocols, as stated in A1, they must also be free and open-sourced. Therefore, proprietary or non-standard protocols should be avoided.
+Repositories should only use protocols that allow any computer to access at least the metadata. Not only does this refer to standard communication protocols, as stated in A1, they must also be free <!-- free of what? freely available? --> and open-sourced. Therefore, proprietary or non-standard protocols should be avoided.
 
 #### A1.2 the protocol allows for an authentication and authorization procedure, where necessary
 
-Where necessary, machine-readable protocols that let the user know that action needs to be taken (such as a login) to access data. FAIR data and open data are not synonymous: FAIR data requires that it must be clearly stated how the data can be accessed, as opposed to granting anyone and everyone full access. This can be especially important for sensitive data, where, for example, personal data and/or medical information may be disclosed. Hence, repositories should also provide a way for users (and their computers) to identify themselves, enabling access permission to be granted.
+Where necessary, machine-readable protocols that let the user know that action needs to be taken (such as a login) to access data. <!-- is the previous sentence complete? -->
+FAIR data and open data are not synonymous: FAIR data requires that it must be clearly stated how the data can be accessed, as opposed to granting anyone and everyone full access. This can be especially important for sensitive data, where, for example, personal data and/or medical information may be disclosed. Hence, repositories should also provide a way for users (and their computers) to identify themselves, enabling access permission to be granted.
 
 ### A2. metadata are accessible, even when the data are no longer available
 
-Storing metadata is cheaper and simpler than storing and maintaining full datasets. Furthermore, the dataset itself may still be available; however, the file format may be outdated, thus limiting access to the full data. Therefore, the metadata should be stored in a separate file, which should be archived forever. A repository should clearly state a contingency plan for metadata storage should the service no longer exist, such as migrating to another repository service provider.
+Storing metadata is cheaper and simpler than storing and maintaining full datasets. Furthermore, the dataset itself may still be available; however, the file format may be outdated, thus limiting access to the full data. <!-- The previous sentence is difficult to understand. Maybe you can write it more in detail: The separation of the data and the describing metadata need to be done on a file level. This is due since ...1) cost 2) outdating 3) ?. ... -->
+Therefore, the metadata should be stored in a separate file, which should be archived forever. A repository should clearly state a contingency plan for metadata storage should the service no longer exist, such as migrating to another repository service provider.
+
+<!-- and to make sure the integrity of the persistent identifier are garanteed. -->
 
 ## Interoperable
 
-Data need to be integrated with and/or compared to other datasets, while computers must be able to interpret and exchange the information. Ideally, they are compatible with standard applications and can thus be integrated into (automated) processing and analysis workflows.
+Data need to be integrated with and/or compared to other datasets, while computers must be able to interpret and exchange the information.
+
+<!-- To me those are not the (main) reasons that data need to be interoperable. One can add that data needs to be interoperable to be able to use it for other purposes.... hm, ok - this is closely related to "Re-Use"?! interoperability is the necessity for re-use.  -->
+
+Ideally, they are compatible with standard applications and can thus be integrated into (automated) processing and analysis workflows.
 
 ### I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation
 
-Machines need to be able to understand how to exchange and interpret information. Similar to humans, a uniform and standard language aids in this understanding. In chemistry, a great typical example of such an information exchange standard is the [crystallographic information (CIF)](https://doi.org/10.1107/97809553602060000107). This standard also adheres to the aspects described in I2 and R1.3 below.
+Machines need to be able to understand how to exchange and interpret information. Similar to humans, an uniform and standard language aids in this understanding. In chemistry, a great typical example of such an information exchange standard is the [crystallographic information (CIF)](https://doi.org/10.1107/97809553602060000107). This standard also adheres to the aspects described in I2 and R1.3 below.
 
 Especially when looking at metadata, effective and efficient machine readability greatly depends on being able to reduce ambiguity. Metadata provides context to datasets. However, machines need to be able to interpret this context. Therefore, the structured schemas chosen by the repositories should include universally applied [ontologies](https://terminology.nfdi4chem.de/ts/ontologies) and controlled vocabularies to define relationships and avoid ambiguity. For example, chemistry-specific repositories should be designed to include ontologies such as the [Chemical Methods Ontology (CHMO)](http://purl.obolibrary.org/obo/chmo.owl). Specifically, a drop-down menu in a given metadata field would include terms defined here regarding chemical methods. This negates spelling errors, synonyms, and so on when entering metadata. Such ontologies should be based on widely-applied data models, for instance, the
 [Resource Description Framework (RDF)](https://www.w3.org/RDF/).
 
+<!-- What are other data models (relevant for chemistry)? -->
+
 ### I2. (meta)data use vocabularies that follow FAIR principles
 
-The applied vocabularies or ontologies should be well documented and resolvable using a PID. For instance, CHMO above uses a [persistent URL (PURL)](http://www.purlz.org/home), resolvable using a standard web browser through http, while the [documentation](https://github.com/rsc-ontologies/rsc-cmo) is publicly available on Github.
+The applied vocabularies or ontologies should be well documented and resolvable using a PID. For instance, CHMO above uses a [persistent URL (PURL)](http://www.purlz.org/home), resolvable using a standard web browser through `http`, while the [documentation](https://github.com/rsc-ontologies/rsc-cmo) is publicly available on Github.
 
 ### I3. (meta)data include qualified references to other (meta)data
 
-Related datasets should be linked in a reliable manner, preferably via their PIDs. This includes any previous versions, datasets required to fully use and comprehend the current dataset, or datasets that the dataset builds upon. This relationship should also be described in a scientifically meaningful way. Repositories should include a method of referring to other datasets in their metadata form.
+Related datasets should be linked in a reliable manner, preferably via their PIDs. This includes any previous versions, datasets required to fully use and comprehend the current dataset, or datasets that the dataset builds upon. This relationship should also be described in a scientifically meaningful way. <!-- what is a scientifically meaningful way? --> Repositories should include a method of referring to other datasets in their metadata form.
 
 ## Reusable
 
